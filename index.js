@@ -1,9 +1,8 @@
 function candySwap(A,B){
-    let a=makeDeepCopy(A);
-    let b=makeDeepCopy(B);
-    for(let i=0;i<a.length;i++){
-        for(let j=0;j<b.length;j++){
-           if(swapAndCheckSum(i,j,a,b)){
+
+    for(let i=0;i<A.length;i++){
+        for(let j=0;j<B.length;j++){
+           if(swapAndCheckSum(i,j,A,B)){
                return [A[i],B[j]];
            }
         }
@@ -14,10 +13,12 @@ function makeDeepCopy(inputArray){
     return newArray=inputArray.map((e)=>e);
 }
 function swapAndCheckSum(i,j,A,B){
-    let temp=A[i];
-    A[i]=B[j];
-    B[j]=temp;
-    return arrSum(A)===arrSum(B);
+    let a=makeDeepCopy(A);
+    let b=makeDeepCopy(B);
+    let temp=a[i];
+    a[i]=b[j];
+    b[j]=temp;
+    return arrSum(a)===arrSum(b);
 
 }
 arrSum = function(arr){
@@ -28,7 +29,7 @@ arrSum = function(arr){
 console.log(candySwap([1,1],[2,2]));
 console.log(candySwap([1,2],[2,3]));
 console.log(candySwap([1,2,5],[2,4]));
-
+console.log(candySwap([35,17,4,24,10],[63,21]));
 // Candy Swap
 // Alice and Bob have candy bars of different sizes: A[i] is the size of the i-th bar of candy that Alice has, and B[j] is the size of the j-th bar of candy that Bob has.
 //
